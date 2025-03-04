@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>信息收集表</title>
+    <style>
+        body {
+            font-family: '微软雅黑', sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .invisible-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .invisible-table td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        label {
+            display: block;
+            padding: 8px 0;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="form-title">信息登记表</h2>
+    <form>
+        <table class="invisible-table">
+            <!-- 第1行 -->
+            <tr>
+                <td width="25%">
+                    <label for="name">姓名：李响</label>
+                </td>
+                <td>
+                    <input type="text" id="name" name="name" required>
+                </td>
+            </tr>
+
+            <!-- 第2行 -->
+            <tr>
+                <td>
+                    <label for="email">电子邮箱：2745425025@qq.com</label>
+                </td>
+                <td>
+                    <input type="email" id="email" name="email" required>
+                </td>
+            </tr>
+
+            <!-- 第3行 -->
+            <tr>
+                <td>
+                    <label for="phone">联系电话：18834176604</label>
+                </td>
+                <td>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{11}">
+                </td>
+            </tr>
+
+            <!-- 第4行 -->
+            <tr>
+                <td>
+                    <label for="address">联系地址：山西省太原市清徐县</label>
+                </td>
+                <td>
+                    <input type="text" id="address" name="address">
+                </td>
+            </tr>
+
+            <!-- 第5行 -->
+            <tr>
+                <td>
+                    <label>所在城市：太原市</label>
+                </td>
+                <td>
+                    <select name="city">
+                        <option value="beijing">北京</option>
+                        <option value="shanghai">上海</option>
+                        <option value="guangzhou">广州</option>
+                        <option value="shenzhen">深圳</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- 第6行 -->
+            <tr>
+                <td>
+                    <label for="postcode">邮政编码：030400</label>
+                </td>
+                <td>
+                    <input type="text" id="postcode" name="postcode" pattern="[0-9]{6}">
+                </td>
+            </tr>
+
+            <!-- 第7行 -->
+            <tr>
+                <td>
+                    <label for="message">留言备注：hello</label>
+                </td>
+                <td>
+                    <textarea id="message" rows="4"></textarea>
+                </td>
+            </tr>
+        </table>
+
+        <div style="margin-top: 20px;">
+            <button type="submit">提交信息</button>
+            <button type="reset">重置表单</button>
+        </div>
+    </form>
+</body>
+</html>
