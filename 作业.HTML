@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>简小丽 - 简历</title>
+    <style>
+        /* 动画径向渐变椭圆 */
+        .gradient-ellipse {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 400px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-image: radial-gradient(
+                circle at 50% 50%,
+                rgba(255, 192, 203, 0.8),
+                rgba(147, 112, 219, 0.6)
+            );
+            animation: gradientShift 8s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-size: 100% 100%; }
+            50% { background-size: 150% 150%; }
+            100% { background-size: 100% 100%; }
+        }
+
+        /* CSS网格布局 */
+        .resume-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: grid;
+            grid-gap: 20px;
+        }
+
+        .personal-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            color: #6a5acd;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-ellipse"></div>
+    
+    <div class="resume-container">
+        <!-- 个人信息 -->
+        <div class="personal-info section">
+            <h2 style="grid-column: 1 / -1;">个人简历</h2>
+            <div>姓名：李响</div><div>年龄：19</div>
+            <div>性别：男</div><div>地址：山西省太原市</div>
+            <div>电话：18834176604</div><div>婚姻状况：未婚</div>
+        </div>
+
+        <!-- 求职意向 -->
+        <div class="section">
+            <h2>求职意向</h2>
+            <h3>区域经理</h3>
+            <ul>
+                <li>社区服务站领导管理员</li>
+                <li>负责客户需求分析与快速处理</li>
+                <li>健康咨询与沟通反馈</li>
+                <li>患者健康体检及高血压监测</li>
+            </ul>
+        </div>
+
+        <!-- 工作经历 -->
+        <div class="section">
+            <h2>工作经历</h2>
+            <ul>
+                <li>客户需求分析与服务达成</li>
+                <li>销售数据统计与文档管理</li>
+                <li>库存管理与日常运营</li>
+                <li>区域卫生与销售任务分解</li>
+                <li>商品信息管理</li>
+            </ul>
+        </div>
+
+        <!-- 教育经历 -->
+        <div class="section">
+            <h2>教育经历</h2>
+            <p>本科学历（正在参加成人高考）</p>
+            <p>社会关系：家人从事教育行业，具有教育资源</p>
+        </div>
+
+        <!-- 自我评价 -->
+        <div class="section">
+            <h2>自我评价</h2>
+            <ul>
+                <li>市场分析与消费者洞察能力</li>
+                <li>产品价格策略影响力</li>
+                <li>团队管理与营销方案执行</li>
+                <li>综合规划与快速学习能力</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
