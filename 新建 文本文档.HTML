@@ -1,10 +1,48 @@
-<form>
-	<p style="text-align: center;">
-		<span style="font-family:comic sans ms,cursive;"><span style="font-size:36px;">Student Information Form</span></span><br>
-	<span style="font-size:20px;"><span style="font-family:comic sans ms,cursive;">Student ID</span></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input name="Student ID" type="text" value="D10774027" /><br>
-	<span style="font-family:comic sans ms,cursive;"><span style="font-size:20px;"><label for="name">Name&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label></span></span>&nbsp;<input name="Name" type="text" value="Li Xiang" /><br />
-		<br />
-		<span style="font-family:comic sans ms,cursive;"><span style="font-size:20px;"><label for="gender">Gender</label>&nbsp;</span></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input checked="checked" id="male" name="gender" type="radio" value="male" /><span style="font-size:20px;"> <label for="male">Male</label></span> <input id="female" name="gender" type="radio" value="female" /> <span style="font-size:20px;"><label for="female">Female</label></span><br />
-		<br />
-		<span style="font-family: &quot;comic sans ms&quot;, cursive;"><span style="font-size:20px;"><label for="habits">Habits</label>&nbsp; &nbsp; &nbsp; </span></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;n<br>
-</form>
+<html>
+<body>
+<style>
+body {
+  margin: 0;
+  padding: 50px;
+  background: #f0f0f0;
+}
+
+#a {
+  /* Front face */
+  position: absolute;
+  background-color: red;
+  width: 200px;
+  height: 200px;
+  left: 100px;
+  top: 50px;
+}
+
+#b {
+  /* Top face */
+  position: absolute;
+  background-color: yellow;
+  width: 200px;
+  height: 200px;
+  transform: skewx(-30deg);
+  left: -50px;
+  top: -100px;
+  transform-origin: right top;
+}
+
+#c {
+  /* Right face */
+  position: absolute;
+  background-color: green;
+  width: 200px;
+  height: 200px;
+  transform: skewy(-30deg);
+  left: 200px;
+  top: 50px;
+  transform-origin: left bottom;
+}
+</style>
+<div id=a></div>
+<div id=b></div>
+<div id=c></div>
+</body>
+</html>
