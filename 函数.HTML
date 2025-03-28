@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二次方程求解器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .equation {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .equation input {
+            width: 60px;
+            margin: 0 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .solution {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            min-height: 50px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>二次方程求解器</h1>
+    
+    <div class="equation">
+        <input type="number" id="a" placeholder="a"> x<sup>2</sup> + 
+        <input type="number" id="b" placeholder="b"> x + 
+        <input type="number" id="c" placeholder="c"> = 0
+    </div>
+
+    <button onclick="solveQuadratic()">求解</button>
+    
+    <div class="solution" id="solutionArea">
+        <!-- 解将在这里动态显示 -->
+    </div>
+
+    <script>
+        function solveQuadratic() {
+            // 获取输入值
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            
+            // 验证输入
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                docu
