@@ -1,57 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balloon Animation</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: skyblue;
-        }
-        .balloon {
-            position: absolute;
-            bottom: 0;
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            border-radius: 50%;
-            transition: background-color 0.5s ease-in-out;
-        }
-    </style>
-</head>
-<body>
-    <script>
-        function createBalloons() {
-            for (let i = 0; i < 10; i++) {
-                let balloon = document.createElement("div");
-                balloon.classList.add("balloon");
-                balloon.style.left = `${Math.random() * window.innerWidth}px`;
-                document.body.appendChild(balloon);
-                animateBalloon(balloon);
-            }
-        }
+similar to C's struct
+python's dictionaary
+PHP associative array
+Java's map
+c++'s class/map/hashmap
+extension of array:
+array:number->value
+object：any --> any type
+key --> value
+object is a collection
+syntax:
+let x = {};
+let y = {a:1, b:2.5, c: 100}; // similar to CSS
+let z = {"a c":1 , "bz":2.5, "c":100};
+attribute=field=key
+It is not necessary for all values to have the same
+type.Object can be inhomogeneous
+var studentrecord={
+id: "D1003435",
+name:"John Smith",
+register:function（i，n）
+{
+studentrecord.id=i;
+studentrecord.name=n;
+}
+};
+studentrecord.register(1,"abc");
 
-        function animateBalloon(balloon) {
-            let position = 0;
-            let size = 50;
-            let interval = setInterval(() => {
-                if (position < window.innerHeight) {
-                    position += 2;
-                    size += 0.5;
-                    balloon.style.transform = `translateY(-${position}px)`;
-                    balloon.style.width = `${size}px`;
-                    balloon.style.height = `${size}px`;
-                    balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                } else {
-                    clearInterval(interval);
-                    balloon.remove(); // Remove balloon when it reaches the top
-                }
-            }, 50);
-        }
+studentrecord also can be viewed as a family name
+using family name is to promote software reusability
+by reducing the chance of name collision
 
-        window.onload = createBalloons;
-    </script>
-</body>
-</html>
+studentrecord.keys
+studentrecord.values
+studentrecord.entries
+
+for loop:
+for (let key in studentrecord)// iteration/traversal/going through
+{
+      console.log(studentrecord.key);
+      console.log(studentrecord[key]);
+}
+
+for(let value of studentrecord) // iteration/traversal/going through
+{
+       console.log(value);
+}
