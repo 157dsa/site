@@ -1,127 +1,93 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>简小丽 - 简历</title>
+    <title>太阳系模拟与对象属性表格</title>
     <style>
-        /* 动画径向渐变椭圆 */
-        .gradient-ellipse {
-            position: fixed;
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            display: block;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background-color: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #data-table {
+            position: absolute;
             top: 50%;
             left: 50%;
-            width: 600px;
-            height: 400px;
             transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background-image: radial-gradient(
-                circle at 50% 50%,
-                rgba(255, 192, 203, 0.8),
-                rgba(147, 112, 219, 0.6)
-            );
-            animation: gradientShift 8s ease infinite;
-            z-index: -1;
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            border-collapse: collapse;
+            display: none;
+            z-index: 100;
         }
-
-        @keyframes gradientShift {
-            0% { background-size: 100% 100%; }
-            50% { background-size: 150% 150%; }
-            100% { background-size: 100% 100%; }
+        #data-table th, #data-table td {
+            padding: 8px 12px;
+            border: 1px solid #444;
+            text-align: center;
         }
-
-        /* CSS网格布局 */
-        .resume-container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            display: grid;
-            grid-gap: 20px;
+        #data-table th {
+            background-color: #333;
+            cursor: pointer;
         }
-
-        .personal-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+        #data-table th:hover {
+            background-color: #555;
         }
-
-        .section {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
+        #data-table tr:nth-child(even) {
+            background-color: rgba(255,255,255,0.1);
         }
-
-        h2 {
-            color: #6a5acd;
-            margin: 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid;
-        }
-
-        body {
-            font-family: 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            background: #f0f2f5;
-            margin: 0;
-            padding: 20px;
+        #close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="gradient-ellipse"></div>
-    
-    <div class="resume-container">
-        <!-- 个人信息 -->
-        <div class="personal-info section">
-            <h2 style="grid-column: 1 / -1;">个人简历</h2>
-            <div>姓名：李响</div><div>年龄：19</div>
-            <div>性别：男</div><div>地址：山西省太原市</div>
-            <div>电话：18834176604</div><div>婚姻状况：未婚</div>
-        </div>
-
-        <!-- 求职意向 -->
-        <div class="section">
-            <h2>求职意向</h2>
-            <h3>区域经理</h3>
-            <ul>
-                <li>社区服务站领导管理员</li>
-                <li>负责客户需求分析与快速处理</li>
-                <li>健康咨询与沟通反馈</li>
-                <li>患者健康体检及高血压监测</li>
-            </ul>
-        </div>
-
-        <!-- 工作经历 -->
-        <div class="section">
-            <h2>工作经历</h2>
-            <ul>
-                <li>客户需求分析与服务达成</li>
-                <li>销售数据统计与文档管理</li>
-                <li>库存管理与日常运营</li>
-                <li>区域卫生与销售任务分解</li>
-                <li>商品信息管理</li>
-            </ul>
-        </div>
-
-        <!-- 教育经历 -->
-        <div class="section">
-            <h2>教育经历</h2>
-            <p>本科学历（正在参加成人高考）</p>
-            <p>社会关系：家人从事教育行业，具有教育资源</p>
-        </div>
-
-        <!-- 自我评价 -->
-        <div class="section">
-            <h2>自我评价</h2>
-            <ul>
-                <li>市场分析与消费者洞察能力</li>
-                <li>产品价格策略影响力</li>
-                <li>团队管理与营销方案执行</li>
-                <li>综合规划与快速学习能力</li>
-            </ul>
-        </div>
+    <canvas id="canvas"></canvas>
+    <div id="info">点击页面任意位置显示太阳系对象数据表格</div>
+    <div id="table-container">
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">名称 ▲</th>
+                    <th onclick="sortTable(1)">质量 (kg)</th>
+                    <th onclick="sortTable(2)">轨道半径 (km)</th>
+                    <th onclick="sortTable(3)">直径 (km)</th>
+                    <th onclick="sortTable(4)">颜色</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+        <button id="close-btn" onclick="hideTable()">×</button>
     </div>
-</body>
-</html>
+
+    <script>
+        // 太阳系对象数据
+        const solarSystem = [
+            { name: "太阳", mass: 1.989e30, radius: 696340, distance: 0, color: "#FFFF00", speed: 0 },
+            { name: "水星", mass: 3.3011e23, radius: 2439.7, distance: 57.9e6, color: "#A9A9A9", speed: 47.87 },
+            { name: "金星", mass: 4.8675e24, radius: 6051.8, distance: 108.2e6, color: "#FFA500", speed: 35.02 },
+            { name: "地球", mass: 5.97237e24, radius: 6371, distance: 149.6e6, color: "#1E90FF", speed: 29.78 },
+            { name: "火星", mass: 6.4171e23, radius: 3389.5, distance: 227.9e6, color: "#FF4500", speed: 24.077 },
+            { name: "木星", mass: 1.8982e27, radius: 69911, distance: 778.5e6, color: "#F4A460", speed: 13.07 },
+            { name: "土星", mass: 5.6834e26, radius: 58232, distance: 1.434e9, color: "#DAA520", speed: 9.69 },
+            { name: "天王星", mass: 8.6810e25, radius: 25362, distance: 2.871e9, color: "#40E0D0", speed: 6.81 },
+            { name: "海王星", mass: 1.02413e26, radius: 24622, distance: 4.495e9, color: "#0000CD", speed: 5.43 },
+            { name: "冥王星", mass: 1.303e22, radius: 1188.3, distance: 5.906e9, color: "#A0522D", speed: 4.67 }
+        ];
